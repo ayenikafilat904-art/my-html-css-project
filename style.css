@@ -253,7 +253,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     .container { padding: 0 16px; }
     .hero { min-height: auto; background-image:
         linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
-        url('DKKW0088.JPG'); }
+        url('/img/img10.JPG'); }
     .hero-content { padding-top: 24px; text-align: center; }
     .hero-content > * { max-width: 100%; }
     .hero h1 { font-size: 2.2rem; }
