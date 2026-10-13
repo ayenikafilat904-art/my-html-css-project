@@ -206,9 +206,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .tab:hover  { color: var(--text); }
 
 .carousel {
-    --card: 230px;   /* card width */
     --gap: 28px;
-    --show: 3;       /* fully visible cards */
+    --show: 3;                                          /* fully visible cards */
+    --inner: calc(min(100%, var(--max)) - 48px);        /* same width as the header line */
+    --card: calc((var(--inner) - (var(--show) - 1) * var(--gap)) / var(--show));
     position: relative;
 }
 .product-track {
@@ -256,9 +257,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 }
 .arrow.next::before { transform: translate(-70%, -50%) rotate(-135deg); }  /* points right */
 .arrow:hover::before { border-color: var(--accent); }
-/* sit each arrow just outside the visible group of cards */
-.arrow.prev { left:  calc(50% - (var(--show) * var(--card) + (var(--show) - 1) * var(--gap)) / 2 - 56px); }
-.arrow.next { right: calc(50% - (var(--show) * var(--card) + (var(--show) - 1) * var(--gap)) / 2 - 56px); }
+/* arrows sit just outside the header line: left of "Our Products", right of "Featured" */
+.arrow.prev { left:  max(0px, calc(50% - var(--inner) / 2 - 48px)); }
+.arrow.next { right: max(0px, calc(50% - var(--inner) / 2 - 48px)); }
 
 /* ============ NEWSLETTER ============ */
 .newsletter { background: var(--blue); padding: 50px 0; }
@@ -302,9 +303,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     .footer-grid { grid-template-columns: 1fr 1fr; }
     .footer-brand { grid-column: 1 / -1; }
     .collection-grid { grid-template-columns: repeat(2, 1fr); }
-    .carousel { --card: 200px; --gap: 20px; }
+    .carousel { --gap: 20px; }
     .product-media { height: 190px; }
-    .arrow { top: 95px; }
+    .arrow { top: 95px; background: rgba(255,255,255,0.85); border-radius: 50%; }
 }
 
 /* ============ PHONE ============ */
@@ -325,7 +326,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
     .collection-grid { grid-auto-rows: 150px; gap: 10px; }
     .collection-card { padding: 12px; }
     .collection-card h4 { font-size: 0.85rem; }
-    .carousel { --show: 1; }
+    .carousel { --show: 1; --card: 220px; }
     .product-card:nth-child(2),
     .product-card:nth-child(4) { opacity: 0.35; }
     .arrow.prev { left: calc(50% - var(--card) / 2 - 44px); }
